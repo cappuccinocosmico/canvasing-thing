@@ -5,6 +5,8 @@ node_modules
 data/
 .vinxi
 .output
+.vercel
+!.vercel/project.json
 .nitro
 .cache
 dist
