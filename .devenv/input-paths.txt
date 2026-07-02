@@ -1,0 +1,10 @@
+/home/nicole/Documents/canvasing-thing/.devenv/bootstrap/bootstrapLib.nix
+/home/nicole/Documents/canvasing-thing/.devenv/bootstrap/default.nix
+/home/nicole/Documents/canvasing-thing/.devenv/bootstrap/resolve-lock.nix
+/home/nicole/Documents/canvasing-thing/devenv.local.nix
+/home/nicole/Documents/canvasing-thing/devenv.lock
+/home/nicole/Documents/canvasing-thing/devenv.nix
+/home/nicole/Documents/canvasing-thing/devenv.yaml
+/home/nicole/.config/nixpkgs/overlays
+/home/nicole/.config/nixpkgs/overlays.nix
+/home/nicole/Documents/canvasing-thing/.env

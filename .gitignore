@@ -1,10 +1,14 @@
-# Devenv
-.devenv*
-devenv.local.nix
-devenv.local.yaml
-
-# direnv
-.direnv
-
-# pre-commit
-.pre-commit-config.yaml
+node_modules
+.DS_Store
+.env
+.env.local
+data/
+.vinxi
+.output
+.nitro
+.cache
+dist
+*.log
+screenshots/
+.idea
+.vscode

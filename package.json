@@ -1,0 +1,46 @@
+{
+  "name": "canvasing-thing",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vinxi dev",
+    "build": "vinxi build",
+    "start": "vinxi start",
+    "version": "vinxi version",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "seed": "tsx src/lib/db/seed.ts",
+    "verify": "tsx scripts/verify.tsx"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.0.0",
+    "@solidjs/router": "^0.15.0",
+    "@solidjs/start": "^1.3.0",
+    "@tanstack/solid-query": "^5.66.0",
+    "better-sqlite3": "^12.0.0",
+    "drizzle-orm": "^0.45.0",
+    "maplibre-gl": "^5.0.0",
+    "papaparse": "^5.5.0",
+    "solid-js": "^1.9.0",
+    "solid-map-gl": "^1.13.0",
+    "vinxi": "^0.5.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/papaparse": "^5.3.16",
+    "autoprefixer": "^10.4.20",
+    "daisyui": "^4.12.23",
+    "drizzle-kit": "^0.31.0",
+    "playwright": "1.60.0",
+    "postcss": "^8.5.0",
+    "tailwindcss": "^3.4.17",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

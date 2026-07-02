@@ -2,6 +2,11 @@
 inputs:
   nixpkgs:
     url: github:cachix/devenv-nixpkgs/rolling
+  # Pinned to nixpkgs commit that ships playwright 1.60.0 so the browser
+  # binary matches the npm package. Update this commit + package.json in
+  # lockstep (see scripts.playwright-version-check in devenv.nix).
+  nixpkgs-playwright:
+    url: github:NixOS/nixpkgs/3d46470bb3030020f7e1361f33514854f5bfa86d
 
 # If you're using non-OSS software, you can set allow_unfree to true.
 # allow_unfree: true
