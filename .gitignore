@@ -3,7 +3,7 @@ node_modules
 .DS_Store
 .env
 .env.local
-/data/
+/data/*
 !/data/seed.json
 .vinxi
 .output
