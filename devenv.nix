@@ -49,12 +49,6 @@ in
     fi
   '';
 
-  # https://devenv.sh/tasks/
-  tasks."canvasing:setup".exec = ''
-    pnpm db:generate
-    pnpm db:push
-  '';
-
   # https://devenv.sh/basics/
   enterShell = ''
     hello         # Run scripts directly

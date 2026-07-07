@@ -1,9 +1,8 @@
 #!/usr/bin/env -S node --experimental-strip-types
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
-import { existsSync, mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { setTimeout as wait } from "node:timers/promises";
 import { chromium, type ConsoleMessage, type Request, type Response } from "playwright";
-import Database from "better-sqlite3";
 
 const BASE = "http://localhost:3000";
 const SCREENSHOTS = "screenshots";
@@ -30,13 +29,13 @@ const ROUTES: { path: string; name: string; checks: string[] }[] = [
 type FirstAddress = { id: number; lng: number; lat: number; street: string };
 
 function getFirstAddress(): FirstAddress {
-  const db = new Database("data/canvass.db", { readonly: true });
-  const row = db
-    .prepare("SELECT id, lng, lat, street FROM addresses ORDER BY id LIMIT 1")
-    .get() as FirstAddress | undefined;
-  db.close();
-  if (!row) throw new Error("no addresses in db — run pnpm seed first");
-  return row;
+  const raw = readFileSync("data/seed.json", "utf8");
+  const seed = JSON.parse(raw) as {
+    addresses: Array<{ id: number; lng: number; lat: number; street: string }>;
+  };
+  const row = seed.addresses[0];
+  if (!row) throw new Error("no addresses in data/seed.json — run pnpm seed first");
+  return { id: row.id, lng: row.lng, lat: row.lat, street: row.street };
 }
 
 function spawnDev(): ChildProcess {

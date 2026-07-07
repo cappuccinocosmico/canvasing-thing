@@ -18,8 +18,5 @@ export default defineConfig({
         clientPort: 3002,
       },
     },
-    ssr: {
-      external: ["better-sqlite3"],
-    },
   },
 });

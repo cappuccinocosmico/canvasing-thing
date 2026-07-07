@@ -1,6 +1,6 @@
 import { Show, Suspense, onCleanup } from "solid-js";
 import { createQuery } from "@tanstack/solid-query";
-import { listAddresses, stats } from "~/lib/server/addresses";
+import { listAddresses, stats } from "~/lib/data/addresses";
 import { setSelectedAddress } from "~/lib/stores/mapSelection";
 import MapClient from "~/lib/components/MapClient";
 import AddressInfoCard from "~/lib/components/AddressInfoCard";
@@ -49,7 +49,8 @@ export default function Home() {
                 <div>
                   <div class="text-2xl mb-2">No addresses yet</div>
                   <div class="opacity-70 mb-4">
-                    Import a CSV or run <code class="kbd kbd-sm">pnpm seed</code> to get started.
+                    Import a CSV of residents to get started. Sample data ships in{" "}
+                    <code class="kbd kbd-sm">data/seed.json</code>.
                   </div>
                   <a href="/import" class="btn btn-primary">Import CSV</a>
                 </div>

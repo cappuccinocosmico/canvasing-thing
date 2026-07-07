@@ -1,8 +1,8 @@
 import { Suspense, Show, For, createSignal } from "solid-js";
 import { createQuery, createMutation, useQueryClient } from "@tanstack/solid-query";
 import { A, useParams } from "@solidjs/router";
-import { getAddress, logVisit } from "~/lib/server/addresses";
-import { homeStatuses, type HomeStatus } from "~/lib/db/schema";
+import { getAddress, logVisit } from "~/lib/data/addresses";
+import { homeStatuses, type HomeStatus } from "~/lib/data/types";
 
 export default function AddressDetail() {
   const params = useParams();
@@ -128,7 +128,7 @@ function VisitForm(props: {
   const [phone, setPhone] = createSignal("");
 
   const mut = createMutation(() => ({
-    mutationFn: (input: Parameters<typeof logVisit>[0]) => logVisit(input),
+    mutationFn: async (input: Parameters<typeof logVisit>[0]) => logVisit(input),
     onSuccess: () => {
       setNotes("");
       setEmail("");

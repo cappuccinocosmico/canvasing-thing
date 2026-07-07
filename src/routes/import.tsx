@@ -1,17 +1,9 @@
 import { createSignal, Show, For } from "solid-js";
-import { useAction, action } from "@solidjs/router";
-import { importCsv, type ImportSummary } from "~/lib/server/csv";
-
-const doImport = action(async (formData: FormData) => {
-  "use server";
-  const file = formData.get("file") as File | null;
-  if (!file || file.size === 0) throw new Error("No file uploaded.");
-  const text = await file.text();
-  return importCsv(file.name, text);
-}, "importCsv");
+import { useQueryClient } from "@tanstack/solid-query";
+import { importCsv, type ImportSummary } from "~/lib/data/csv";
 
 export default function ImportPage() {
-  const submit = useAction(doImport);
+  const qc = useQueryClient();
   const [result, setResult] = createSignal<ImportSummary | null>(null);
   const [error, setError] = createSignal<string | null>(null);
   const [busy, setBusy] = createSignal(false);
@@ -25,6 +17,9 @@ export default function ImportPage() {
         <code>city</code>, <code>state</code>, <code>zip</code>. Optional: <code>age</code>,{" "}
         <code>party</code>.
       </p>
+      <p class="text-xs opacity-60">
+        Note: this is a UI demo — imported rows live in browser memory and reset on refresh.
+      </p>
       <form
         class="card bg-base-200 p-4 space-y-3"
         onSubmit={async (e) => {
@@ -34,8 +29,13 @@ export default function ImportPage() {
           setBusy(true);
           try {
             const fd = new FormData(e.currentTarget);
-            const r = await submit(fd);
-            setResult(r as ImportSummary);
+            const file = fd.get("file") as File | null;
+            if (!file || file.size === 0) throw new Error("No file uploaded.");
+            const text = await file.text();
+            const r = await importCsv(file.name, text);
+            setResult(r);
+            qc.invalidateQueries({ queryKey: ["addresses"] });
+            qc.invalidateQueries({ queryKey: ["stats"] });
           } catch (err) {
             setError((err as Error).message);
           } finally {

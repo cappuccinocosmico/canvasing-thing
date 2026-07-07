@@ -1,7 +1,7 @@
 import { Suspense, Show, For, createSignal } from "solid-js";
 import { createQuery } from "@tanstack/solid-query";
 import { A } from "@solidjs/router";
-import { listVisits } from "~/lib/server/addresses";
+import { listVisits } from "~/lib/data/addresses";
 
 export default function Visits() {
   const [filter, setFilter] = createSignal<"all" | "talked" | "interested" | "home">("all");

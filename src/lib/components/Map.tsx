@@ -2,7 +2,7 @@ import { Show, createEffect, createMemo, createSignal, onCleanup } from "solid-j
 import MapGL, { Source, Layer } from "solid-map-gl";
 import * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import type { AddressWithStats } from "~/lib/server/addresses";
+import type { AddressWithStats } from "~/lib/data/addresses";
 import { setSelectedAddress } from "~/lib/stores/mapSelection";
 
 const STYLE = {

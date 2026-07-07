@@ -1,5 +1,5 @@
 import { clientOnly } from "@solidjs/start";
-import type { AddressWithStats } from "~/lib/server/addresses";
+import type { AddressWithStats } from "~/lib/data/addresses";
 
 type Props = {
   addresses: AddressWithStats[];
